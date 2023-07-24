@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GoalStyle</title>
+<link rel="stylesheet" type="text/css" href="css/style2.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+<script src="https://fonts.googleapis.com/css?family=Roboto+Slab:700"></script>
+<script src="https://fonts.googleapis.com/css?family=Montserrat:400,700"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.3/mobile-detect.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script src="js/script2.js"></script>
+<style>
+</style>
+<script>
+    function showLoginPopup() {
+        var popupOverlay = document.getElementById('popup-overlay');
+        popupOverlay.style.display = 'flex';
+    }
+</script>
+</head>
+<body>
+	
+
+
+
+	<div class="wrapper">
+	
+		<canvas id="stars"></canvas>
+		<canvas id="yahia"></canvas>
+		<div class="container">
+			<div class="template color-yellow" data-template="home">
+				<main>
+					<h1>
+						<span>Football <mark>Uniform</mark> Information
+						</span><span> and Styling</span>
+					</h1>
+					<div class="p">
+						<span>모든 축구 팬들을 위한 유니폼의 세계로 오신 것을 환영합니다!</span>
+					</div>
+					<div class="links">
+						<a class="link color-yellow"
+							href="html/main.html"
+							title="Uniform information" target="_blank">⛹️‍♀️Uniform information
+							list</a> <a class="link color-green"
+							href="html/codi.html"
+							title="Codi" target="_blank">📷Codi</a> <a
+							class="link color-red"
+							href="html/clip.html"
+							title="Clip" target="_blank">🎞️Clip</a>
+					</div>
+						<div class="img-wrapper">
+						<img src="image/main/ganzi.jpg" alt="이미지 설명">
+					</div>
+					<button id="login-button" onclick="showLoginPopup()"
+		style="position: absolute; top: 20%; right: 35px; padding: 8px 16px; color: #FFFFFF; background-color: #171a19; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Login</button>
+				</main>
+			
+			</div>
+		</div>
+	</div>
+
+
+
+<div class="popup-overlay" id="popup-overlay" style="display: none;">
+    <div class="popup-content">
+        <span class="popup-close" id="popup-close">&times;</span>
+        <h2>로그인</h2>
+        <form class="popup-form">
+            <div class="popup-input">
+                <label for="login-username">아이디:</label>
+                <input type="text" id="login-username" required>
+            </div>
+            <div class="popup-input">
+                <label for="login-password">비밀번호:</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit" class="popup-button">로그인</button>
+            <p>아직 회원이 아니신가요? <a href="#" id="signup-link">회원가입</a></p>
+        </form>
+    </div>
+</div>
+	
+</body>
+</html>

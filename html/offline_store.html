@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Offline Store</title>
+  <style>
+    body {
+      background-color: black;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    p{
+    color : #F5F5F5;
+    }
+    
+   
+   @keyframes sparkle {
+  0% {
+    color: #F5F5F5; 
+  }
+  25% {
+    color: #CCCCCC; 
+  }
+  50% {
+    color: #999999; 
+  }
+  70% {
+    color: #CCCCCC; 
+  }
+  90% {
+    color: #AAAAAA; 
+  }
+  100% {
+    color: #F5F5F5; 
+  }
+}
+
+
+    h1 {
+      margin-top: 20px;
+      color : #7C7C7C;
+    }
+
+    .map-container {
+      width: 600px;
+      height: 400px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    .store-info {
+      position: relative;
+    }
+
+    .store-info img {
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      color: #F5F5F5;
+    }
+    .category-container {
+      margin-bottom: 20px;
+    }
+
+    .category-button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #000000;
+      color: #7C7C7C;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .category-button:hover {
+      background-color: #999999;
+    }
+
+    .category-button:focus {
+      outline: none;
+    }
+    
+    .store-info {
+    position: relative;
+    animation: slide-down 0.5s ease-out forwards;
+    opacity: 01;
+  }
+  @keyframes slide-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+.store-info img:hover  {
+	transform: scale(1.2);
+}
+
+.map-container {
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.store-info img {
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+
+
+  </style>
+  <!-- 카카오맵 API 스크립트와 Swiper 라이브러리 스크립트를 추가합니다 -->
+  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9d97072881c8aba749386593c3327fb1&libraries=services"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script>
+    function initMap(mapId, lat, lng) {
+      var container = document.getElementById(mapId);
+      var options = {
+        center: new kakao.maps.LatLng(lat, lng),
+        level: 3
+      };
+      var map = new kakao.maps.Map(container, options);
+      var markerPosition = new kakao.maps.LatLng(lat, lng);
+      var marker = new kakao.maps.Marker({
+        position: markerPosition,
+        map: map
+      });
+    }
+
+    function initSwiper() {
+      var swiper = new Swiper('.swiper-container', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1,
+        spaceBetween: 20,
+        on: {
+          slideChange: function () {
+            var currentMap = document.getElementById('map' + (this.activeIndex + 1));
+            if (currentMap) {
+              var lat = currentMap.getAttribute('data-lat');
+              var lng = currentMap.getAttribute('data-lng');
+              initMap(currentMap.id, parseFloat(lat), parseFloat(lng));
+            }
+          },
+        },
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initSwiper();
+      initMap('map1', 37.566536, 126.985056);
+      initMap('map2', 37.556188, 126.925791);
+      initMap('map3', 37.266101, 127.040769);
+      initMap('map4', 37.652346, 126.837537); 
+    });
+    function showStoresByCategory(category) {
+        var swiper = document.querySelector('.swiper-container').swiper;
+        var slides = swiper.slides;
+        for (var i = 0; i < slides.length; i++) {
+          var slide = slides[i];
+          var storeInfo = slide.querySelector('.store-info');
+          if (storeInfo.innerText.includes(category)) {
+            swiper.slideTo(i);
+            return;
+          }
+        }
+      }
+  </script>
+</head>
+<body>
+<h1>Offline Store Information</h1>
+  <a href="../index.html"
+		style="position: absolute; top: 30px; left: 80%; background-color: black; font-family: sans-serif; font-size: 25px; animation: sparkle 1s infinite; text-decoration: none;">Home</a>
+	<a href="main.html"
+		style="position: absolute; top: 30px; left: 75%; background-color: black; font-family: sans-serif; font-size: 25px; animation: sparkle 1s infinite; text-decoration: none;">뒤로가기</a>
+  <div>
+    <button class="category-button" onclick="showStoresByCategory('중구')">중구</button>
+    <button class="category-button" onclick="showStoresByCategory('마포')">마포</button>
+    <button class="category-button" onclick="showStoresByCategory('수원')">수원</button>
+    <button class="category-button" onclick="showStoresByCategory('고양')">고양</button>
+    <!-- 원하는 지역별 카테고리 버튼을 추가하세요 -->
+  </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="store-info">
+          <p>
+            <img src="../image/store/uni1.jpg" alt="Store Image 1">
+            <img src="../image/store/uni2.jpg" alt="Store Image 2">
+          </p>
+          <div id="map1" class="map-container" data-lat="37.566536" data-lng="126.985056"></div>
+          <p>카포 동대문점 Nike Football Store</p>
+          <p>주소 : 서울특별시 중구 을지로 282 카포빌딩</p>
+          <p>전화번호 : 02-1234-5678</p>
+        </div>
+        
+      </div>
+      <div class="swiper-slide">
+        <div class="store-info">
+          <p>
+            <img src="../image/store/uni3.jpg" alt="Store Image 1">
+            <img src="../image/store/uni4.jpg" alt="Store Image 2">
+          </p>
+          <div id="map2" class="map-container" data-lat="37.556188" data-lng="126.925791"></div>
+          <p>오버더피치</p>
+          <p>주소 : 서울특별시 마포구 서교동 404-2</p>
+          <p>전화번호 : 02-1234-5678</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="store-info">
+          <p>
+            <img src="../image/store/uni5.jpg" alt="Store Image 1">
+            <img src="../image/store/uni6.jpg" alt="Store Image 2">
+          </p>
+          <div id="map3" class="map-container" data-lat="37.266101" data-lng="127.040769"></div>
+          <p>카포 수원광교점 Multi-brand Football Store</p>
+          <p>주소 : 경기도 수원시 영통구 도청로 10, 롯데아울렛 광교점 2층</p>
+          <p>전화번호 : 02-1234-5678</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="store-info">
+          <p>
+            <img src="../image/store/uni7.jpg" alt="Store Image 1">
+            <img src="../image/store/uni8.jpg" alt="Store Image 2">
+          </p>
+          <div id="map4" class="map-container" data-lat="37.652346" data-lng="126.837537"></div>
+          <p>사커붐</p>
+          <p>주소 : 경기도 고양시 덕양구 행주로17번길 42-10</p>
+          <p>전화번호 : 02-1234-5678</p>
+        </div>
+      </div>
+    </div>
+   <!--  <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div> -->
+  </div>
+</body>
+</html>

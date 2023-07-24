@@ -1,0 +1,254 @@
+<!-- club_uniforms.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Club Uniforms</title>
+<style>
+
+.uniforms img:hover {
+	transform: scale(1.2);
+}
+body {
+	background-color: black;
+	color: #F5F5F5;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+@keyframes sparkle {
+    0% {
+        color: #F5F5F5; 
+    }
+    25% {
+        color: #CCCCCC; 
+    }
+    50% {
+        color: #999999; 
+    }
+    70% {
+        color: #CCCCCC; 
+    }
+    90% {
+        color: #AAAAAA; 
+    }
+    100% {
+        color: #F5F5F5; 
+    }
+}
+
+h1 {
+	margin-top: 20px;
+}
+
+.star {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.star img {
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	cursor: pointer;
+}
+
+.uniforms {
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.uniforms.active {
+	display: flex;
+}
+
+.uniforms img {
+	width: 250px;
+	height: 400px;
+	margin: 20px;
+}
+
+.gif-container {
+	margin-top: 50px;
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 80px;
+}
+
+.gif-container img {
+	width: 800px;
+	height: 400px;
+	object-fit: cover;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	animation: sparkle 2s linear infinite;
+}
+</style>
+<script>
+function toggleUniforms(clubName) {
+    var uniforms = document.getElementById(clubName);
+    var allUniforms = document.getElementsByClassName("uniforms");
+  
+    // Hide all other uniforms
+    for (var i = 0; i < allUniforms.length; i++) {
+        allUniforms[i].classList.remove("active");
+    }
+  
+    // Toggle the selected uniform
+    uniforms.classList.toggle("active");
+}
+</script>
+</head>
+<body>
+	<h1>Player-Specific Jerseys</h1>
+	<a href="../index.html"
+		style="position: absolute; top: 30px; left: 80%; background-color: black; font-family: sans-serif; font-size: 25px; animation: sparkle 1s infinite; text-decoration: none;">Home</a>
+	<a href="main.html"
+		style="position: absolute; top: 30px; left: 75%; background-color: black; font-family: sans-serif; font-size: 25px; animation: sparkle 1s infinite; text-decoration: none;">뒤로가기</a>
+	<div class="star">
+		<img src="../image/player/son.png" alt="" onclick="toggleUniforms('son')">
+		<img src="../image/player/messi.png" alt="" onclick="toggleUniforms('me')">
+		<img src="../image/player/Neymar.png" alt="" onclick="toggleUniforms('ne')">
+		<img src="../image/player/ronaldo.png" alt="" onclick="toggleUniforms('ro')">
+		<img src="../image/player/haaland.png" alt="" onclick="toggleUniforms('ha')">			
+	</div>
+	
+	<div id="ha" class="uniforms">
+		<a href="https://shop.mancity.com/en/shop-by-player/mens-team/forwards/erling-haaland/" target="_blank"> 
+		<img src="../image/star/ha1.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 맨체스터시티</p>
+			<p>리그: EPL</p>
+		</div>
+		 <a href="https://kr.dhgate.com/product/2019-liga-mx-kids-kit-monterrey-home-stripe/425016756.html" target="_blank">
+		<img src="../image/star/ha2.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 노르웨이</p>
+			<p>리그: 국가대표</p>
+		</div> 
+		<a href="https://www.bvbonlineshop.com/en/jerseys-co/?p=1" target="_blank">
+		<img src="../image/star/ha3.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 도르트문트</p>
+			<p>리그: 분데스리가</p>
+		</div> 
+		<div class="gif-container">
+        <img src="../image/star/hol.gif" alt="Son Heung-min GIF">
+    </div>
+	</div>
+	
+	<div id="ro" class="uniforms">
+		<a href="https://mad4sport.co.kr/product/%ED%8F%AC%EB%A5%B4%ED%88%AC%EA%B0%88-%EC%B6%95%EA%B5%AC-%EA%B5%AD%EA%B0%80%EB%8C%80%ED%91%9C%ED%8C%80-2022-23-%EC%96%B4%EC%9B%A8%EC%9D%B4-%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%8A%A4%ED%83%80%EB%94%94%EC%9B%80-%EB%A0%88%ED%94%8C%EB%A6%AC%EC%B9%B4-%EC%9C%A0%EB%8B%88%ED%8F%BC-by-%EB%82%98%EC%9D%B4%ED%82%A4/76652/" target="_blank">
+		<img src="../image/star/ro1.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 포루투갈</p>
+			<p>리그: 국가대표</p>
+		</div> 
+		<a href="https://store.manutd.com/ko/manchester-united-men/t-25425657+ga-90+z-997533-882507022" target="_blank">
+		<img src="../image/star/ro2.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 맨체스터 유나이티드</p>
+			<p>리그: EPL</p>
+		</div> 
+		<a href="https://kr.shop.realmadrid.com/products/rmcfmz0127-real-madrid-mens-home-authentic-shirt-23-24-white" target="_blank">
+		<img src="../image/star/ro3.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 레알마드리드</p>
+			<p>리그: LaLiga</p>
+		</div> 
+		<div class="gif-container">
+        <img src="../image/star/ro.gif" alt="Son Heung-min GIF">
+    </div>
+	</div>
+	
+	<div id="ne" class="uniforms">
+		<a href="https://www.nike.com/kr/t/%EB%B8%8C%EB%9D%BC%EC%A7%88-2022-23-%EC%8A%A4%ED%83%80%EB%94%94%EC%9B%80-%ED%99%88-%EB%82%A8%EC%84%B1-%EB%93%9C%EB%9D%BC%EC%9D%B4-%ED%95%8F-%EC%B6%95%EA%B5%AC-%EC%A0%80%EC%A7%80-IyxLvMSf" target="_blank">
+		<img src="../image/star/ne1.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 브라질</p>
+			<p>리그: 국가대표</p>
+		</div> 
+		<a href="https://store.psg.fr/ko/paris-saint-germain/t-25192593+z-9969056-3892928360" target="_blank">
+		<img src="../image/star/ne2.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 파리 생제르망</p>
+			<p>리그: 프랑스리그1</p>
+		</div> 
+		<a href="https://store.fcbarcelona.com/collections/new-in-men" target="_blank">
+		<img src="../image/star/ne3.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 바르셀로나</p>
+			<p>리그: LaLiga</p>
+		</div> 
+		<div class="gif-container">
+        <img src="../image/star/ne.gif" alt="Son Heung-min GIF">
+    </div>
+	</div>
+	
+	<div id="me" class="uniforms">
+		<a href="https://www.adidas.co.kr/argentina_national_team-football" target="_blank">
+		<img src="../image/star/me1.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 아르헨티나</p>
+			<p>리그: 국가대표</p>
+		</div> 
+		<a href="https://store.psg.fr/ko/paris-saint-germain/t-25192593+z-9969056-3892928360" target="_blank">
+		<img src="../image/star/me2.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 파리 생제르망</p>
+			<p>리그: 프랑스리그1</p>
+		</div> 
+		<a href="https://store.psg.fr/ko/paris-saint-germain/t-25192593+z-9969056-3892928360" target="_blank">
+		<img src="../image/star/me3.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 바르셀로나</p>
+			<p>리그: LaLiga</p>
+		</div> 
+		<div class="gif-container">
+        <img src="../image/star/messi.gif" alt="Son Heung-min GIF">
+    </div>
+	</div>
+
+	<div id="son" class="uniforms">
+		<a href="https://kream.co.kr/products/78150" target="_blank">
+		<img src="../image/star/son1.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 대한민국</p>
+			<p>리그: 국가대표</p>
+		</div> 
+		<a href="https://shop.tottenhamhotspur.com/spurs-home-kit" target="_blank">
+		<img src="../image/star/son2.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 토트넘 훗스퍼</p>
+			<p>리그: EPL</p>
+		</div> 
+		<a href="https://www.bayer04.de/en-us/shop/" target="_blank">
+		<img src="../image/star/son3.png" alt="">
+		</a>
+		<div>
+			<p>팀명: 레버쿠젠</p>
+			<p>리그: 분데스리가</p>
+		</div> 
+		 <div class="gif-container">
+        <img src="../image/star/son.gif" alt="Son Heung-min GIF">
+    </div>
+	</div>
+</body>
+</html>

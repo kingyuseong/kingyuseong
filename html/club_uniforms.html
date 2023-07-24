@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Club Uniforms</title>
+<style>
+body {
+	background-color: black;
+	color:  #F5F5F5;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+p{
+color: #7C7C7C;
+}
+
+
+h1 {
+	margin-top: 20px;
+}
+
+
+.club-logos {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.club-logos img {
+	width: 80px;
+	height: 80px;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.uniforms {
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.uniform-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1px;
+  margin: 0 auto;
+  width: 30%;
+  justify-items: center;
+}
+
+.uniforms {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+
+.uniforms img {
+	width: auto;
+	height: 150px;
+	margin: 20px;
+	transition: transform 0.5s;
+}
+
+.uniforms img:hover {
+	transform: scale(1.2);
+}
+
+.uniform-info p {
+	margin: 10px 20px;
+}
+
+
+   @keyframes sparkle {
+  0% {
+    color: #F5F5F5; 
+  }
+  25% {
+    color: #CCCCCC; 
+  }
+  50% {
+    color: #999999; 
+  }
+  70% {
+    color: #CCCCCC; 
+  }
+  90% {
+    color: #AAAAAA; 
+  }
+  100% {
+    color: #F5F5F5; 
+  }
+}
+
+
+</style>
+<script>
+var selectedLeague = null;
+var selectedClub = null;
+
+function toggleLogos(leagueName) {
+  var logos = document.getElementById(leagueName);
+  if (logos.style.display === "none") {
+    logos.style.display = "flex";
+  } else {
+    logos.style.display = "none";
+  }
+
+  // 이전에 선택된 리그의 클럽 로고들 숨기기
+  if (selectedLeague && selectedLeague !== leagueName) {
+    var previousLogos = document.getElementById(selectedLeague);
+    previousLogos.style.display = "none";
+  }
+
+  selectedLeague = leagueName;
+
+  // 유니폼 정보 숨기기
+  hideUniforms();
+}
+
+function toggleUniforms(clubName) {
+  var uniforms = document.getElementById(clubName);
+  if (uniforms.style.display === "none") {
+    uniforms.style.display = "block";
+
+    // 이전에 선택된 클럽이 있는 경우 해당 유니폼 정보 숨기기
+    if (selectedClub && selectedClub !== clubName) {
+      var previousUniforms = document.getElementById(selectedClub);
+      previousUniforms.style.display = "none";
+    }
+
+    selectedClub = clubName;
+  } else {
+    uniforms.style.display = "none";
+    selectedClub = null;
+  }
+}
+
+function hideUniforms() {
+  if (selectedClub) {
+    var uniforms = document.getElementById(selectedClub);
+    uniforms.style.display = "none";
+    selectedClub = null;
+  }
+}
+	
+	</script>
+</head>
+<body>
+	<h1>Club-Specific Jerseys</h1>
+	<a href="../index.html"
+		style="position: absolute; top: 30px; left: 80%; background-color: black; font-family: sans-serif; font-size: 25px; animation: sparkle 1s infinite; text-decoration: none;">Home</a>
+	<a href="main.html"
+		style="position: absolute; top: 30px; left: 75%; background-color: black; font-family: sans-serif; font-size: 25px; animation: sparkle 1s infinite; text-decoration: none;">뒤로가기</a>	
+	<div class="club-logos">
+		<img src="../image/league_logo/serie.png" alt=""
+			onclick="toggleLogos('serie')"style="width: 150px; height: 150px;">
+		<img src="../image/league_logo/EPL2.png" alt=""
+			onclick="toggleLogos('EPL')"style="width: 150px; height: 150px;">
+		<img src="../image/league_logo/laliga.png" alt=""
+			onclick="toggleLogos('laliga')"style="width: 150px; height: 180px;">
+		<img src="../image/league_logo/k.png" alt=""
+			onclick="toggleLogos('k')"style="width: 120px; height: 150px;">			
+	</div>
+	
+	<div id="laliga" class="club-logos" style="display: none;">
+		<img src="../image/logo/basel.png" alt=""
+			onclick="toggleUniforms('ba')">
+		<img src="../image/logo/real.png" alt=""
+			onclick="toggleUniforms('re')">
+	</div>
+	
+
+	<div id="serie" class="club-logos" style="display: none;">
+		<img src="../image/logo/ac.png" alt=""
+			onclick="toggleUniforms('ac')">
+		<img src="../image/logo/napolli.png" alt=""
+			onclick="toggleUniforms('na')">		
+		<img src="../image/logo/inter.png" alt=""
+			onclick="toggleUniforms('in')">	
+		<img src="../image/logo/juven.png" alt=""
+			onclick="toggleUniforms('ju')">			
+	</div>
+
+	<div id="EPL" class="club-logos" style="display: none;">
+		<img src="../image/logo/arsenal.png" alt=""
+			onclick="toggleUniforms('as')">
+		<img src="../image/logo/chelsea.png" alt=""
+			onclick="toggleUniforms('ch')">		
+		<img src="../image/logo/citi.png" alt=""
+			onclick="toggleUniforms('ci')"style="width: 100px; height: 80px;">	
+		<img src="../image/logo/manche.png" alt=""
+			onclick="toggleUniforms('man')">
+		<img src="../image/logo/tottenham.png" alt=""
+			onclick="toggleUniforms('to')">				
+	</div>
+	
+	<div id="k" class="club-logos" style="display: none;">
+		<img src="../image/logo/hyudai.png" alt=""
+			onclick="toggleUniforms('hy')"style="width: 100px; height: 100px;">
+		<img src="../image/logo/inchen.png" alt=""
+			onclick="toggleUniforms('inc')"style="width: 100px; height: 100px;">
+		<img src="../image/logo/seoul.png" alt=""
+			onclick="toggleUniforms('se')"style="width: 100px; height: 100px;">
+		<img src="../image/logo/suwonfc.png" alt=""
+			onclick="toggleUniforms('su')"style="width: 100px; height: 100px;">		
+	</div>
+	
+	<div id="su" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/su.jpg" alt="">
+			<div>
+				<p>팀명: 수원FC</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/su2.jpg" alt="">
+			<div>
+				<p>팀명: 수원FC</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/su 22.jpg" alt="">
+			<div>
+				<p>팀명: 수원FC</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/su 22 third.jpg" alt="">
+			<div>
+				<p>팀명: 수원FC</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="se" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/se.jpg" alt="">
+			<div>
+				<p>팀명: FC서울</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/se2.jpg" alt="">
+			<div>
+				<p>팀명: FC서울</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+				<div class="uniform">
+			<img src="../image/uni/se 22.jpg" alt="">
+			<div>
+				<p>팀명: FC서울</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+				<div class="uniform">
+			<img src="../image/uni/se 22 away.jpg" alt="">
+			<div>
+				<p>팀명: FC서울</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="inc" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/in 23 kit.jpg" alt="">
+			<div>
+				<p>팀명: 인천<br/>유나이티드</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Specialkit</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in 23 away.jpg" alt="">
+			<div>
+				<p>팀명: 인천<br/>유나이티드</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in 22.jpg" alt="">
+			<div>
+				<p>팀명: 인천<br/>유나이티드</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in 22 away.jpg" alt="">
+			<div>
+				<p>팀명: 인천<br/>유나이티드</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="hy" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/hy.jpg" alt="">
+			<div>
+				<p>팀명: 울산현대</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/hy2.jpg" alt="">
+			<div>
+				<p>팀명: 울산현대</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="https://i.namu.wiki/i/doL7j9-d29bYBB47j5MqrZXKoJmWZ0JGw9sRr-n99ywicYb1Fd94ETqwSN6rZUNOV7B8yjhvgXkf8KvPJ6nSWmYUUAZ6TkuDbvJub-piVtL0EZYczlEsrFWCYFj7oLPV5WupzGNBt51l4A0tImJyzA.webp" alt="">
+			<div>
+				<p>팀명: 울산현대</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="https://i.namu.wiki/i/pB1UNUHwOV6cMa1pUL0eOG-_xomoBpSja7AbjRZm48_xdpLOggexdvEsPNEpEF7cb591wvM3nvMy9d2ky7Fcz5bWZRTfxNMAuVzn-86bXQSvBvK5pT6KXa71whsIo1xJS3CcjYZ2666BxsiaJAC5dQ.webp" alt="">
+			<div>
+				<p>팀명: 울산현대</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Brandday</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="https://i.namu.wiki/i/sqyq7991tq9CDA_pcaWuYG7weE7MAxJjy82fi179WeMKdEVVPJO1zlES-U-0MKJUq-G4RTrjrjK3dmxb-JOXvIcHTp_j8lco6g5ntgfW77tq5zACd4oYyUa-jE-Dv3_ICnUrwW2BYHGpQ0zJ4wD38w.webp">
+			<div>
+				<p>팀명: 울산현대</p>
+				<p>시즌: 2019</p>
+				<p>타입: AFC리그</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="https://i.namu.wiki/i/fjOf_mcEi7Ng6JvaN0OzmcSx0f6Crw9B2oyloQhsgu6q1wmVe0hDOCA2MHYJMvN-_NfUCnT-kFUIWJHlocK39XnbxlfDWzlLq3BX_AymFRjH0mEUzzeaJ-iz_r0MRJljC1wNYaTZYaBQtlUgk4xrvQ.webp" alt="">
+			<div>
+				<p>팀명: 울산현대</p>
+				<p>시즌: 2019</p>
+				<p>리그: AFC리그</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="ba" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/ba23-24 away.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ba23-24 GK.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ba22-23.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ba22-23 GK.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ba20-21 away.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ba20-21 clasico.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Clasico</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ba16-17.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2016-2017</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ba16-17 away.jpg" alt="">
+			<div>
+				<p>팀명: 바르셀로나</p>
+				<p>시즌: 2016-2017</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="re" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/re.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re2.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re22-23 GK.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re21-22 fourth.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Fourth</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re21-22 GK.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re21-22 GK fourth.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: GK Fourth</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re20-21 third.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re19-20.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re18-19.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2018-2019</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/re18-19 away.jpg" alt="">
+			<div>
+				<p>팀명: 레알마드리드</p>
+				<p>시즌: 2018-2019</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="to" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/to.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/to23-24 third.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/to22-23.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/to22-23 2.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home2</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/to21-22.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/to21-22 away.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/to20-21.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/to19-20 away.jpg" alt="">
+			<div>
+				<p>팀명: 토트넘 훗스퍼</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="man" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/man23-24.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/man22-23.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/man22-23 away.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/man22-23 GK third.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: GK Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/man21-22.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/man20-21.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/man20-21 away.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/man19-20 third.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터<br/> 유나이티드</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="ci" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/ci23-24.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ci22-23.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ci21-22.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ci20-21 away.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ci20-21 GK.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ci19-20.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ci17-18 third.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2017-2018</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ci17-18 GK third.jpg" alt="">
+			<div>
+				<p>팀명: 맨체스터 시티</p>
+				<p>시즌: 2017-2018</p>
+				<p>타입: GK Third</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="ch" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/ch.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ch2.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ch19-20.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ch19-20 GK.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ch17-18.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2017-2018</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ch17-18 away.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2017-2018</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ch16-17.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2016-2017</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ch15-16 third.jpg" alt="">
+			<div>
+				<p>팀명: 첼시</p>
+				<p>시즌: 2015-2016</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="as" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/as23-24.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/as23-24 GK.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/as22-23.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/as22-23 away.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			
+			<div class="uniform">
+			<img src="../image/uni/as22-23 third.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/as22-23 GK.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/as21-22.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/as20-21 GK.jpg" alt="">
+			<div>
+				<p>팀명: 아스날</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="ju" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/juven.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ju23-24 third.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2023-2024</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/juven2.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ju22-23.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ju22-23 away.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ju21-22.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ju21-22 away.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ju17-18 GK.jpg" alt="">
+			<div>
+				<p>팀명: 유벤투스</p>
+				<p>시즌: 2017-2018</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="in" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/inter.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/inter2.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in21-22 GK.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in19-20.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in19-20 Third.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in17-18 third.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2017-2018</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in16-17 away.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2016-2017</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/in11-12 GK.jpg" alt="">
+			<div>
+				<p>팀명: 인터밀란</p>
+				<p>시즌: 2011-2012</p>
+				<p>타입: GK</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="ac" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+			<div class="uniform">
+				<img src="../image/uni/ac1.jpg" alt="">
+				<div>
+					<p>팀명: AC 밀란</p>
+					<p>시즌: 2023-2024</p>
+					<p>타입: HOME</p>
+				</div><br/>
+			</div>
+			<div class="uniform">
+				<img src="../image/uni/ac2.jpg" alt="">
+				<div>
+					<p>팀명: AC 밀란</p>
+					<p>시즌: 2022-2023</p>
+					<p>타입: HOME</p>
+				</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ac21-22.jpg" alt="">
+			<div>
+				<p>팀명: AC 밀란</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: HOME</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ac21-22 gk away.jpg" alt="">
+			<div>
+				<p>팀명: AC 밀란</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: GK Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ac20-21.jpg" alt="">
+			<div>
+				<p>팀명: AC 밀란</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: HOME</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ac20-21 third.jpg" alt="">
+			<div>
+				<p>팀명: AC 밀란</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ac19-20 away.jpg" alt="">
+			<div>
+				<p>팀명: AC 밀란</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/ac19-20 third.jpg" alt="">
+			<div>
+				<p>팀명: AC 밀란</p>
+				<p>시즌: 2019-2020</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div id="na" class="uniforms" style="display: none;">
+		<div class="uniform-info">
+		<div class="uniform">
+			<img src="../image/uni/napoli.jpg" alt="">
+			<div>
+				<p>팀명: 나폴리</p>
+				<p>시즌: 2022-2023</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/napoli2.jpg" alt="">
+			<div>
+				<p>팀명: 나폴리</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/na21-22 away.jpg" alt="">
+			<div>
+				<p>팀명: 나폴리</p>
+				<p>시즌: 2021-2022</p>
+				<p>타입: Away</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/na20-21.jpg" alt="">
+			<div>
+				<p>팀명: 나폴리</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/na20-21 third.jpg" alt="">
+			<div>
+				<p>팀명: 나폴리</p>
+				<p>시즌: 2020-2021</p>
+				<p>타입: Third</p>
+			</div>
+			</div>
+			<div class="uniform">
+			<img src="../image/uni/na15-16.jpg" alt="">
+			<div>
+				<p>팀명: 나폴리</p>
+				<p>시즌: 2015-2016</p>
+				<p>타입: Home</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
