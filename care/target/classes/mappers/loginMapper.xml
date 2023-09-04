@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LoginDAO">
+
+	<!-- 회원 -->
+	<select id="getLogin" parameterType="LoginVO" resultType="LoginVO">
+	SELECT * FROM member where id=#{id} and pw=#{pw}
+	</select>
+	
+	<update id="updatemember" parameterType="LoginVO">
+	UPDATE MEMBER SET name=#{name}, tel=#{tel}, addr=#{addr}, pw=#{pw}, nick=#{nick} WHERE id=#{id}
+	</update>
+	
+	<select id="myList" resultType="LoginVO">
+	SELECT * FROM member where id=#{id}
+	</select>
+	
+	<select id="memUp" resultType="LoginVO">
+	SELECT * FROM member where id=#{id}
+	</select>	
+	
+	
+		
+</mapper>
+
+
+

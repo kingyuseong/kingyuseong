@@ -1,0 +1,62 @@
+
+
+.top{
+	margin: 0 auto;
+}
+
+
+#title{
+	 height : 23px;
+	 border-style: solid;
+	 border-width: 1px;
+	 border-color: #0083ff;
+	 border-radius: 3px;
+}
+
+#datetimepicker{
+	 height : 23px;
+	 border-style: solid;
+	 border-width: 1px;
+	 border-color: #0083ff;
+	 border-radius: 3px;
+}
+
+#datetimepicker1{
+	 height : 23px;
+	 border-style: solid;
+	 border-width: 1px;
+	 border-color: #0083ff;
+	 border-radius: 3px;
+}
+
+#btn{
+	border-style: solid;
+	border-width: 2px;
+	border-color: #0083ff;
+	border-radius: 3px;
+	background-color: white;
+}
+
+label {
+  font-size: 15px;
+  line-height: 1.5rem;
+  padding: 0.2em 0.2em;
+}
+
+[type="radio"] {
+  vertical-align: middle;
+  appearance: none;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.2em;
+  height: 1.25em;
+}
+
+[type="radio"]:checked {
+  border: 0.4em solid #0083ff;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  cursor: pointer;
+}

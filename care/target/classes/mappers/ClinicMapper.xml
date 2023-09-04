@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClinicDAO">
+
+ 
+
+  <!-- 모든 자치구 명을 가져오는 쿼리 -->
+  <select id="getGooName" parameterType="CategoryVO" resultType="CategoryVO">
+    SELECT * FROM reggoo
+  </select>
+  
+    <!-- 선택된 자치구에 해당하는 동명을 가져오는 쿼리 -->
+  <select id="getDongName"  resultType="CategoryVO">
+    SELECT b.regname FROM reggoo a, region b where a.reggooname = #{reggooname} AND a.reggoocode = b.reggoocode 
+  </select>
+
+	    <!-- 매장정보 -->
+  <select id="getClinic" parameterType="string" resultType="ClinicVO">
+    SELECT * FROM clinic where regioncode in (SELECT regioncode FROM region where regname = #{regname})
+      </select>
+
+
+</mapper>

@@ -1,0 +1,24 @@
+/*------------------------------------------------------------------
+    File Name: custom.css
+-------------------------------------------------------------------*/
+
+/** ADD YOUR AWESOME CODES HERE **/
+.th_tr > th{
+	width: 150px !important;
+	padding: 14px 0px 14px !important;
+}
+.th_s{
+	float: left;
+    height: 40px;
+    padding: 0 0px 0 30px;
+        width: 110px;
+}
+.bottom_list > ul > li > h1{
+	padding: 10px;
+}
+.flower-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 500px;
+}

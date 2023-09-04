@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FairDAO">
+ <resultMap type="fair" id="fairreserveRM">
+        <id property="faircode" column="FAIRCODE" />
+        <result property="fairname" column="FAIRNAME" />
+        <result property="fairaddr" column="FAIRADDR" />
+        <result property="fairstart" column="FAIRSTART" />
+        <result property="fairend" column="FAIREND" />
+        <result property="fairurl" column="FAIRURL" />
+        <result property="fairpoto" column="FAIRPOTO" />
+        <result property="faircatecode" column="FAIRCATECODE" />
+    </resultMap>
+
+	<!-- 박람회 정보 제공--> 
+<select id="fairList" resultType="fair"  >
+         SELECT F.FAIRNAME, F.FAIRADDR, TO_CHAR(F.FAIRSTART,'YYYY.MM.DD')AS FAIRSTART,TO_CHAR(F.FAIREND,'YYYY.MM.DD')AS FAIREND,F.FAIRURL,F.FAIRPOTO, C.FAIRCATE
+         FROM FAIR F, FAIRCATE C WHERE F.FAIRCATECODE = C.FAIRCATECODE
+         ORDER BY FAIRCATE ASC
+   </select> 
+	
+	<select id="fairReserve" resultMap="fairreserveRM">
+	SELECT F.FAIRNAME, TO_CHAR(F.FAIRSTART, 'YYYY-MM-DD"T"'), TO_CHAR(F.FAIREND, 'YYYY-MM-DD"T"'), C.FAIRCATE, C.FAIRCOLOR FROM FAIR F, FAIRCATE C WHERE F.FAIRCATECODE = C.FAIRCATECODE
+	</select>
+
+</mapper>

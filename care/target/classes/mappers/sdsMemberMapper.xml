@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SdsMemberDAO">
+	
+	<!-- 아이디 중복체크 -->
+	<select id="sdsIdCheck" parameterType="sdsmember" resultType="sdsmember">
+		select * from sdsmember where sdsid=#{sdsid}
+		<if test="sdspw !=null">
+			and sdspw=#{sdspw}
+		</if>
+	</select>
+	<!-- 닉네임 중복체크 -->
+	<select id="sdsNickCheck" parameterType="sdsmember" resultType="sdsmember">
+		select * from sdsmember where sdsnick=#{sdsnick}
+		<if test="sdspw !=null">
+			and sdspw=#{sdspw}
+		</if>
+	</select>
+	
+	<!-- 상담사가입 -->
+	<insert id="sdsMemberInsert" parameterType="sdsmember">
+		INSERT INTO SDSMEMBER(sdsmemcode, sdsname, sdsdate, sdstel, sdsaddr, sdscheck, sdscard, sdsid, sdspw, sdssex, sdsnick, SDSIMG, SDSIMGNAME) values(SEQ_SDSMEMBER.nextval, #{sdsname}, sysdate, #{sdstel}, #{sdsaddr}, 'N', #{sdscard}, #{sdsid}, #{sdspw}, #{sdssex}, #{sdsnick}, #{sdsimg}, #{sdsimgname})	
+	</insert>
+	
+	<!-- 상담사탈퇴 -->
+	<delete id="sdsmemberDelete" parameterType="sdsmember">
+		DELETE FROM sdsmember
+		WHERE sdsid = #{sdsid}
+		<if test="sdspw !=null">
+			and sdspw=#{sdspw}
+		</if>
+	</delete>
+	
+	<!-- 아이디 찾기 -->
+	<select id="sdsconid" resultType="sdsmember">
+		select sdsid from sdsmember where sdstel=#{sdstel}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="sdsconpw" resultType="sdsmember">
+		select sdspw from sdsmember where sdsid=#{sdsid}
+	</select>
+	
+</mapper>

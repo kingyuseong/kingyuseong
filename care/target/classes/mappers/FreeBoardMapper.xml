@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FreeBoardDAO">
+
+      <insert id="createFreeBoard" parameterType="freeBoard">
+        INSERT INTO FREE(FREECODE, FREETITLE, FREEDATE, FREECONTENT, MEMCODE, FREEIMG, FREEIMGNAME)
+        VALUES(seq_free.NEXTVAL, #{freetitle}, sysdate, #{freecontent}, #{memcode}, #{freeimg,jdbcType=VARCHAR}, #{freeimgname,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateFreeBoard" parameterType="freeBoard">
+        UPDATE FREE SET
+        FREETITLE = #{freetitle},
+        FREECONTENT = #{freecontent}
+        WHERE FREECODE = #{freecode}
+    </update>
+
+    <delete id="deleteFreeBoard" parameterType="freeBoard">
+        DELETE FROM FREE
+        WHERE FREECODE = #{freecode}
+    </delete>
+
+    <select id="getFreeBoard" parameterType="freeBoard" resultType="freeBoard">
+    SELECT f.*, m.NICK AS "member.nick"
+    FROM FREE f
+    LEFT JOIN MEMBER m ON f.MEMCODE = m.MEMCODE
+    WHERE f.FREECODE = #{freecode}
+    </select>
+
+    <select id="getAllFreeBoards" resultType="freeBoard">
+    SELECT f.*, m.NICK AS "member.nick" 
+    FROM FREE f
+    LEFT JOIN MEMBER m ON f.MEMCODE = m.MEMCODE
+    ORDER BY f.FREECODE DESC
+   </select>
+
+    <!-- 검색 추가 -->
+   <select id="getFreeBoardListBySearch" resultType="freeBoard" parameterType="hashmap">
+    SELECT f.*, m.NICK AS "member.nick"
+    FROM FREE f
+    LEFT JOIN MEMBER m ON f.MEMCODE = m.MEMCODE
+    <where>
+        <if test="searchCondition != null">
+            <choose>
+                <when test="searchCondition == 'freetitle'">
+                    AND FREETITLE LIKE '%${searchKeyword}%'
+                </when>
+                <when test="searchCondition == 'freecode'">
+                    AND FREECODE LIKE '%${searchKeyword}%'
+                </when>
+                <when test="searchCondition == 'nick'">
+                    AND m.NICK LIKE '%${searchKeyword}%'
+                </when>
+                <!-- 다른 검색 조건도 처리할 수 있도록 추가 -->
+            </choose>
+        </if>
+    </where>
+    ORDER BY f.FREECODE DESC
+</select>
+
+<!-- 아이디로 회원 정보 가져오기 -->
+    <select id="getMemberById" parameterType="java.lang.String" resultType="com.javaclass.domain.MemberVO">
+        SELECT * FROM MEMBER
+        WHERE ID = #{id}
+    </select>
+
+</mapper>

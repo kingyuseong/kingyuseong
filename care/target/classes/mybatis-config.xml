@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+   <!-- Alias 설정 -->
+   <typeAliases>
+      <typeAlias alias="fair" type="com.javaclass.domain.FairVO" />
+      <typeAlias alias="job" type="com.javaclass.domain.JobVO" />
+      <typeAlias alias="reservation" type="com.javaclass.domain.ReservationVO" />
+      <typeAlias alias="login" type="com.javaclass.domain.LoginVO" />            
+      <typeAlias alias="sdslogin" type="com.javaclass.domain.SdsLoginVO" />            
+      <typeAlias alias="member" type="com.javaclass.domain.MemberVO" />            
+      <typeAlias alias="sdsmember" type="com.javaclass.domain.SdsMemberVO" />            
+      <typeAlias alias="reserve" type="com.javaclass.domain.ReserveVO" />        
+      <typeAlias alias="sdsreserve" type="com.javaclass.domain.SdsReserveVO" />        
+      <typeAlias alias="support" type="com.javaclass.domain.SupportVO" />  
+      <typeAlias alias="diary" type="com.javaclass.domain.DiaryVO" />       <!-- 일기&감정분류 -->
+      <typeAlias alias="bucket" type="com.javaclass.domain.BucketVO" />     <!-- 버킷리스트 -->   
+      <typeAlias alias="emo" type="com.javaclass.domain.EmoVO" />     <!-- 감정그래프 --> 
+      <typeAlias alias="freeboard" type="com.javaclass.domain.FreeBoardVO" />       
+   </typeAliases>
+
+</configuration>

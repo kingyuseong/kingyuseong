@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EmoDAO">
+
+	<!-- 감정분류를 일기장 년,월을 기준으로 입장(?)버튼을 만듬 -->
+	<select id="getEmoList" parameterType="emo" resultType="emo">
+		SELECT
+		TO_CHAR(n.NOTEDATE, 'yyyy-mm') as NOTEDATE from NOTE n, member m
+		where m.memcode = n.memcode
+		and m.memcode=#{memcode}
+		GROUP BY TO_CHAR(n.NOTEDATE, 'yyyy-mm')
+		ORDER BY TO_CHAR(n.NOTEDATE, 'yyyy-mm') DESC 
+	</select>
+
+	<!-- 상세보기 -->
+	<select id="getEmo" parameterType="emo" resultType="emo">
+		SELECT
+		ne.notegood, ne.notebad, ne.notecode, TO_CHAR(n.notedate, 'yyyy-mm-dd') notedate, m.memcode
+		FROM NOTEEMO ne, NOTE n, MEMBER m
+		WHERE
+		n.NOTECODE=ne.NOTECODE
+		AND m.MEMCODE=n.MEMCODE
+		AND m.MEMCODE=#{memcode}
+		AND n.NOTECODE in (
+		SELECT NOTECODE FROM NOTE WHERE NOTEDATE BETWEEN to_date('${notedate}',
+		'yyyy-mm-dd')
+		AND last_day(to_date('${notedate}', 'yyyy-mm-dd'))
+		)
+	</select>
+
+</mapper>

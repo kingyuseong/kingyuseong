@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SdsReserveDAO">
+    <resultMap type="sdsreserve" id="sdsreserveRM">
+     <id property="srcode" column="SRCODE" />
+        <result property="sctitle" column="SCTITLE" />
+        <result property="sdsstartdate" column="SDSSTARTDATE" />
+        <result property="sdsenddate" column="SDSENDDATE" />
+        <result property="sdsmemcode" column="SDSMEMCODE" />
+    </resultMap>
+    
+    <insert id="insertSdsReserve" parameterType="sdsreserve">
+    <!-- DateTimePicker의 선택한 날짜를 FullCalendar 형식으로 변환하여 저장 -->
+    <![CDATA[
+  INSERT INTO SRESERVE(SRCODE, SCTITLE, SDSSTARTDATE, SDSENDDATE, SDSMEMCODE)
+  VALUES(SEQ_SRSERVE.NEXTVAL, #{sctitle}, TO_DATE(#{sdsstartdate}, 'YYYY-MM-DD HH24:MI:SS'), TO_DATE(#{sdsenddate}, 'YYYY-MM-DD HH24:MI:SS'), #{sdsmemcode})
+    ]]>
+	</insert>
+
+   <select id="getSdsReserveList" resultMap="sdsreserveRM">
+    <![CDATA[
+    SELECT SRCODE,SCTITLE, SDSMEMCODE,
+    TO_CHAR(SDSSTARTDATE, 'YYYY-MM-DD"T"HH24:MI:SS') AS SDSSTARTDATE
+    FROM SRESERVE
+    WHERE SDSMEMCODE = #{sdsmemcode}
+    ]]>
+	</select>
+	
+	<update id="updateSdsReserve" parameterType="sdsreserve">
+	 <![CDATA[
+   	UPDATE SRESERVE SET sctitle=#{sctitle}, sdsstartdate=to_date(#{sdsstartdate}, 'YYYY-MM-DD HH24:MI:SS'), sdsenddate=to_date(#{sdsenddate}, 'YYYY-MM-DD HH24:MI:SS') where sdsmemcode = #{sdsmemcode} and srcode=#{srcode}
+     ]]>
+   </update>
+   
+   <delete id="deleteSdsReserve" parameterType="sdsreserve">
+   <![CDATA[
+      DELETE FROM SRESERVE WHERE srcode=#{srcode}
+      ]]>
+   </delete>
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FairDAO">
+
+	<!-- 오라클인 경우  박람회 정보 제공--> 
+	<select id="getBoardList" resultType="FairVO">
+		<![CDATA[
+		SELECT * FROM uploadtemp ORDER BY b_id DESC
+		]]>
+	</select>
+
+</mapper>

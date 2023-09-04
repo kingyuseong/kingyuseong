@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SdsLoginDAO">
+
+	<!-- 상담사 -->
+	<select id="sdsLogin" parameterType="sdslogin" resultType="sdslogin">
+	SELECT * FROM sdsmember where sdsid=#{sdsid} and sdspw=#{sdspw}
+	</select>
+	
+	<update id="updatesdsmember" parameterType="LoginVO">
+	UPDATE sdsMEMBER SET sdsname=#{sdsname}, sdstel=#{sdstel}, sdsaddr=#{sdsaddr}, sdspw=#{sdspw}, sdsnick=#{sdsnick} WHERE sdsid=#{sdsid}
+	</update>
+	
+	<select id="sdsList" resultType="sdslogin">
+	SELECT * FROM sdsmember where sdsid=#{sdsid}
+	</select>
+	
+	<select id="sdsmemUp" resultType="sdslogin">
+	SELECT * FROM sdsmember where sdsid=#{sdsid}
+	</select>
+	
+		
+</mapper>

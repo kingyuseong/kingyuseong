@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDAO">
+   
+   <!-- 아이디 중복체크 -->
+   <select id="idCheck" parameterType="member" resultType="member">
+      select * from member where id=#{id}
+      <if test="pw !=null">
+         and pw=#{pw}
+      </if>
+   </select>
+   <!-- 닉네임 중복체크 -->
+   <select id="nickCheck" parameterType="member" resultType="member">
+      select * from member where nick=#{nick}
+      <if test="pw !=null">
+         and pw=#{pw}
+      </if>
+   </select>
+   
+   <!-- 회원가입 -->
+   <insert id="memberInsert" parameterType="member">
+      INSERT INTO MEMBER(memcode, name, memdate, tel, addr, id, pw, sex, grade, nick)
+       values(SEQ_MEMBER.nextval, #{name}, sysdate, #{tel}, #{addr}, #{id}, #{pw}, #{sex}, '회원', #{nick})   
+   </insert>
+   
+   <!-- 회원탈퇴 -->
+   <delete id="memberDelete" parameterType="member">
+      DELETE FROM member WHERE id = #{id} <if test="pw !=null">and pw=#{pw}</if>
+   </delete>
+   
+   <!-- 아이디 찾기 -->
+   <select id="conid" resultType="member">
+      select id from member where tel=#{tel}
+   </select>
+   
+   <!-- 비밀번호 찾기 -->
+   <select id="conpw" resultType="member">
+      select pw from member where id=#{id}
+   </select>
+   
+</mapper>
+
+   

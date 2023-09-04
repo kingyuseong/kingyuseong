@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReserveDAO">
+    <resultMap type="reserve" id="reserveRM">
+        <id property="mrcode" column="MRCODE" />
+        <result property="mctitle" column="MCTITLE" />
+        <result property="mccate" column="MCCATE" />
+        <result property="startdate" column="STARTDATE" />
+        <result property="enddate" column="ENDDATE" />
+        <result property="sdsmemcode" column="SDSMEMCODE" />
+        <result property="memcode" column="MEMCODE" />
+    </resultMap>
+    
+    <select id="dateCheck" parameterType="String" resultMap="reserveRM">
+    <![CDATA[
+    SELECT MRCODE, MEMCODE, MCTITLE, MCCATE,
+    TO_CHAR(startdate, 'YYYY-MM-DD"T"HH24:MI:SS') AS STARTDATE
+    FROM mreserve WHERE startdate = TO_DATE(#{startdate}, 'YYYY-MM-DD HH24:MI:SS')
+    ]]>
+</select>
+
+    
+    <select id="getEventsInRange" resultMap="reserveRM">
+    <![CDATA[
+   SELECT MRCODE, MEMCODE, MCTITLE, MCCATE,
+    TO_CHAR(startdate, 'YYYY-MM-DD"T"HH24:MI:SS') AS STARTDATE
+    FROM mreserve
+    WHERE SDSMEMCODE = #{sdsmemcode} 
+    AND (
+        (STARTDATE >= TO_DATE(#{startdate}, 'YYYY-MM-DD HH24:MI:SS') AND STARTDATE <= TO_DATE(#{enddate}, 'YYYY-MM-DD HH24:MI:SS'))
+        OR
+        (ENDDATE >= TO_DATE(#{startdate}, 'YYYY-MM-DD HH24:MI:SS') AND ENDDATE <= TO_DATE(#{enddate}, 'YYYY-MM-DD HH24:MI:SS'))
+        OR
+        (STARTDATE <= TO_DATE(#{startdate}, 'YYYY-MM-DD HH24:MI:SS') AND ENDDATE >= TO_DATE(#{enddate}, 'YYYY-MM-DD HH24:MI:SS'))
+    )
+    ]]>
+   </select>
+    
+    <insert id="insertReserve" parameterType="reserve">
+    <!-- DateTimePicker의 선택한 날짜를 FullCalendar 형식으로 변환하여 저장 -->
+    <![CDATA[
+    INSERT INTO MRESERVE(MRCODE, MCTITLE, MCCATE, STARTDATE, ENDDATE, SDSMEMCODE, MEMCODE) 
+    VALUES(seq_mreserve.nextval, #{mctitle}, #{mccate}, 
+    to_date(#{startdate}, 'YYYY-MM-DD HH24:MI:SS'),
+    to_date(#{enddate}, 'YYYY-MM-DD HH24:MI:SS'), #{sdsmemcode}, #{memcode})
+    ]]>
+   </insert>
+   
+   <update id="updateReserve" parameterType="reserve">
+      UPDATE MRESERVE set mctitle=#{mctitle}, mccate=#{mccate}, startdate=to_date(#{startdate}, 'YYYY-MM-DD HH24:MI:SS'), enddate=to_date(#{enddate}, 'YYYY-MM-DD HH24:MI:SS') where memcode = #{memcode} and mrcode=#{mrcode}
+   </update>
+   
+   <delete id="deleteReserve" parameterType="reserve">
+      DELETE FROM MRESERVE where mrcode=#{mrcode}
+   </delete>
+   
+   <select id="getEventList" resultMap="reserveRM">
+    <![CDATA[
+    SELECT m.MRCODE, m.MEMCODE, m.MCTITLE, m.MCCATE, c.COLOR, c.NICK,
+    TO_CHAR(m.startdate, 'YYYY-MM-DD"T"HH24:MI:SS') AS STARTDATE
+    FROM mreserve m, member c
+    where m.memcode = c.memcode and m.sdsmemcode = #{sdsmemcode}
+    ]]>
+   </select>
+</mapper>

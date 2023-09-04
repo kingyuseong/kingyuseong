@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JobDAO">
+
+	<!-- 일자리정보 제공--> 
+<select id="jobList" resultType="job"  >
+         SELECT JOBTITLE, JOBNAME, JOBEND, JOBLOC, JOBEXPER, JOBREQ, JOBTYPE, JOBURL
+         FROM JOB
+         ORDER BY JOBCODE DESC
+   </select> 
+	
+
+</mapper>
