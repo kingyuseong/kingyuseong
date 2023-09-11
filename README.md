@@ -1,20 +1,20 @@
 
 
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header&text=Yuseong%20Github&fontSize=50" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header&text=Welcome%20to%20Yuseong's%20Github😎&fontSize=50" />
 
 
 
 <p align="center">
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkingyuseong&count_bg=%23FF0019&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 </p>
-<h3 align="center"><b>💌 Social 💌 </b></h3>
-</br>
+<h3 align="center"><b>💌 SNS 💌 </b></h3>
+
 <p align="center">
 <a href="https://www.instagram.com/yuseoxx/" target="_blank"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=Instagram&logoColor=white"/></a>
 </p>
 
-<div align=center><h1>📚 STACKS</h1></div>
+<h3 align="center"><b>📚 STACKS 📚 </b></h3>
 
 <div align=center> 
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
