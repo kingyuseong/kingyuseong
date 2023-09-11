@@ -3,20 +3,24 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header&text=Welcome%20to%20Yuseong's%20Github😎&fontSize=50" />
 
-
-
-<p align="center">
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkingyuseong&count_bg=%23FF0019&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
-</p>
-<h3 align="center"><b>💌 SNS 💌 </b></h3>
 
-<p align="center">
+Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
+AngularJS-powered HTML5 Markdown editor.
+
+- Type some Markdown on the left
+- See HTML in the right
+- ✨Magic ✨
+<br/>
+<h3><b>💌 SNS 💌 </b></h3>
+
+
 <a href="https://www.instagram.com/yuseoxx/" target="_blank"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=Instagram&logoColor=white"/></a>
-</p>
 
-<h3 align="center"><b>📚 STACKS 📚 </b></h3>
 
-<p align=center> 
+<h3><b>📚 STACKS 📚 </b></h3>
+
+<p> 
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> 
   <br>
@@ -47,7 +51,7 @@
 </p>
 
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
+
 
 
 
