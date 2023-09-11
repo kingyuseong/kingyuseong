@@ -4,7 +4,10 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=header&text=Welcome%20to%20Yuseong's%20Github😎&fontSize=50" />
 
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkingyuseong&count_bg=%23FF0019&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
-<a href="https://www.instagram.com/yuseoxx/" target="_blank"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=Instagram&logoColor=white"/></a>
+<a href="https://www.instagram.com/yuseoxx/"><img 
+        src="http://img.shields.io/badge/-Instagram-black?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
+        style="height : auto; margin-left : 10px; margin-right : 10px;"/>
+</a>
 <br>
 <br>
 <h1>비전공자 김유성 개발자 도전✨</h1>
