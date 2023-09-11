@@ -4,19 +4,15 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=header&text=Welcome%20to%20Yuseong's%20Github😎&fontSize=50" />
 
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkingyuseong&count_bg=%23FF0019&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
-
-Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
-AngularJS-powered HTML5 Markdown editor.
-
-- Type some Markdown on the left
-- See HTML in the right
-- ✨Magic ✨
-<br/>
-<h3><b>💌 SNS 💌 </b></h3>
-
-
 <a href="https://www.instagram.com/yuseoxx/" target="_blank"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=Instagram&logoColor=white"/></a>
+<br>
+<br>
+<h1>비전공자 김유성 개발자 도전✨</h1>
 
+- 항공 JAVA 풀스택 개발자 양성과정 수료
+- See HTML in the right
+- 취준😂
+<br/>
 
 <h3><b>📚 STACKS 📚 </b></h3>
 
@@ -49,6 +45,7 @@ AngularJS-powered HTML5 Markdown editor.
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <br>
 </p>
+
 
 
 
